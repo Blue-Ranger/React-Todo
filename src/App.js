@@ -1,29 +1,63 @@
 import React from "react";
-import TodoForm from "./components/TodoForm";
 import "./App.css";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: [],
-      currentItem: {
-        text: "",
-        key: "",
-      },
+      todos: [],
     };
-    this.handleInput = this.handleInput.bind(this);
-    this.addItem = this.handleInput.bind(this);
   }
   render() {
     return (
-      <div className="App">
-        <h2>Todo App!</h2>
-        <h1>{this.state.message}</h1>
-        <TodoForm />
+      <div>
+        <h1>Hello World!</h1>
+        <AddTodo addTodoFn={this.addTodo} />
+        <TodoList updateTodoFn={this.updateTodo} todos={this.state.todos} />
       </div>
     );
   }
+
+  componentDidMount = () => {
+    const todos = localStorage.getItem("todos");
+    if (todos) {
+      const savedTodos = JSON.parse(todos);
+      // setState is an async function. pass in object
+      // update todos set it equal to savedTodos
+      this.setState({ todos: savedTodos });
+    } else {
+      console.log("No todos");
+    }
+  };
+
+  addTodo = async (todo) => {
+    await this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          text: todo,
+          completed: false,
+        },
+      ],
+    });
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    console.log(localStorage.getItem("todos"));
+  };
+
+  updateTodo = async (todo) => {
+    const newTodos = this.state.todos.map((_todo) => {
+      if (todo === _todo)
+        return {
+          text: todo.text,
+          completed: !todo.completed,
+        };
+      else return _todo;
+    });
+    await this.setState({ todos: newTodos });
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  };
 }
 
 export default App;
