@@ -72,29 +72,75 @@ export default class TodoList extends React.Component {
             todo={todo}
           />
         ))}
-        <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "black",
+            color: "white",
+            width: "30%",
+            margin: "auto",
+            marginTop: "1%",
+            marginBottom: "1%",
+          }}
+        >
           remaining active todos:{" "}
           {this.state.todos.filter((todo) => !todo.complete).length}
         </div>
         <div>
-          <button onClick={() => this.updateTodoToShow("all")}>All</button>
-          <button onClick={() => this.updateTodoToShow("active")}>
-            Active
+          <button
+            style={{
+              display: "flex",
+              marginLeft: "45%",
+              marginTop: "1%",
+              marginBottom: "1%",
+            }}
+            onClick={() => this.updateTodoToShow("all")}
+          >
+            Show All Task
           </button>
-          <button onClick={() => this.updateTodoToShow("complete")}>
-            Complete
+          <button
+            style={{
+              display: "flex",
+              marginLeft: "45%",
+              marginTop: "1%",
+              marginBottom: "1%",
+            }}
+            onClick={() => this.updateTodoToShow("active")}
+          >
+            Show Active Task
+          </button>
+          <button
+            style={{
+              display: "flex",
+              marginLeft: "45%",
+              marginTop: "1%",
+              marginBottom: "1%",
+            }}
+            onClick={() => this.updateTodoToShow("complete")}
+          >
+            Show Completed Task
           </button>
         </div>
         {this.state.todos.filter((todo) => todo.complete).length ? (
           <div>
-            <button onClick={this.removeAllTodosThatAreComplete}>
-              Remove All Complete Todos
+            <button
+              style={{ display: "flex", marginLeft: "45%" }}
+              onClick={this.removeAllTodosThatAreComplete}
+            >
+              Remove All Completed Todos
             </button>
           </div>
         ) : null}
 
         <div>
           <button
+            style={{
+              display: "flex",
+              marginLeft: "45%",
+              marginTop: "1%",
+              marginBottom: "1%",
+            }}
             onClick={() =>
               this.setState((state) => ({
                 todos: state.todos.map((todo) => ({
@@ -105,7 +151,7 @@ export default class TodoList extends React.Component {
               }))
             }
           >
-            Toggle All Complete:{`${this.state.toggleAllComplete}`}
+            Toggle All Task Completed:{`${this.state.toggleAllComplete}`}
           </button>
         </div>
       </div>

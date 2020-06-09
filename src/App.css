@@ -1,3 +1,24 @@
 body {
   background-color: #9266ff;
 }
+
+/* button {
+  justify-content: center;
+  margin: auto;
+}
+
+form {
+  justify-content: center;
+  margin: auto;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+} */
+
+input text {
+  display: flex;
+  margin-left: 45%;
+}
