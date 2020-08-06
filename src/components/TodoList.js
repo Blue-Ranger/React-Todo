@@ -162,3 +162,4 @@ export default class TodoList extends React.Component {
 // line 99, passes a function that returns the new value of a state that you want to update.
 // line 99 uses in-line format to add the toggleAllComplete function directly into the onClick function
 // line 99, passed in "state =>" within the function setState to make it possible to remove "this." on lines 100, 102, and 104. Which is an alternate way than line 46.
+//added id generator library
