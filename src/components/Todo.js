@@ -1,19 +1,14 @@
 import React from "react";
 
-//line 21 todoList
-export default (props) => (
-  //places the delete button to the right of the todo task
-  <div style={{ display: "flex", justifyContent: "center" }}>
+const Todo = (props) => {
+  return (
     <div
-      //styling draws a line through completed task when clicked
-      style={{
-        textDecoration: props.todo.complete ? "line-through" : "",
-      }}
-      onClick={props.toggleComplete}
+      style={props.todo.completed ? { textDecoration: "line-through" } : null}
+      onClick={() => props.handleToggleComplete(props.todo.id)}
     >
-      {props.todo.text}
+      {props.todo.task}
     </div>
+  );
+};
 
-    <button onClick={props.onDelete}>Delete</button>
-  </div>
-);
+export default Todo;
